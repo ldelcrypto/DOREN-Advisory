@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOREN Advisory | Growth &amp; Strategy for Early-Stage Startups</title>
+<meta name="description" content="DOREN Advisory helps early-stage founders sharpen their market positioning and build a foundational community that fuels durable, organic growth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0a0a0a;
+    --black-2:#141414;
+    --white:#ffffff;
+    --offwhite:#f7f7f5;
+    --ink:#111111;
+    --muted:#5f5f5f;
+    --muted-dark:#a3a3a3;
+    --line:#e2e2e0;
+    --line-dark:rgba(255,255,255,.14);
+    --max:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Playfair Display',serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:600;
+  }
+  .on-dark .eyebrow{color:var(--muted-dark);}
+
+  /* NAV */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(10,10,10,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:74px;
+  }
+  .brand{
+    color:#fff;font-family:'Inter',sans-serif;
+    font-weight:700;font-size:15px;letter-spacing:.16em;
+    text-transform:uppercase;
+  }
+  .navlinks{display:flex;gap:36px;align-items:center;}
+  .navlinks a{
+    color:#d8d8d8;font-size:14px;font-weight:500;
+    letter-spacing:.02em;
+    transition:color .2s;
+  }
+  .navlinks a:hover{color:#fff;}
+  .navlinks a.active{color:#fff;}
+  #aboutView{display:none;}
+  .navlinks a.cta{
+    color:#000;background:#fff;
+    padding:10px 20px;border-radius:2px;font-weight:600;
+  }
+  .navlinks a.cta:hover{background:#d8d8d8;}
+  .menu-btn{display:none;background:none;border:0;color:#fff;font-size:24px;cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    background:var(--black);
+    color:#fff;
+    padding:180px 0 120px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;top:-120px;right:-120px;width:480px;height:480px;
+    border:1px solid rgba(255,255,255,.08);border-radius:50%;
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-160px;right:-40px;width:320px;height:320px;
+    border:1px solid rgba(255,255,255,.06);border-radius:50%;
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero .eyebrow{color:var(--muted-dark);margin-bottom:22px;}
+  .hero h1{
+    font-size:56px;font-weight:600;line-height:1.15;
+    max-width:780px;margin-bottom:24px;letter-spacing:-.01em;
+  }
+  .hero h1 em{font-style:italic;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);}
+  .hero p.lead{
+    font-size:19px;color:#c9c9c9;max-width:560px;margin-bottom:40px;font-weight:400;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:70px;}
+  .btn{
+    display:inline-block;padding:15px 30px;font-size:14.5px;font-weight:600;
+    letter-spacing:.03em;border-radius:2px;transition:all .2s;
+  }
+  .btn-primary{background:#fff;color:#000;}
+  .btn-primary:hover{background:#d8d8d8;}
+  .btn-outline{border:1px solid rgba(255,255,255,.35);color:#fff;}
+  .btn-outline:hover{border-color:#fff;}
+
+  .stat-row{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line-dark);
+    padding-top:36px;max-width:780px;
+  }
+  .stat-row div{padding-right:20px;}
+  .stat-num{font-family:'Playfair Display',serif;font-size:34px;color:#fff;font-weight:600;}
+  .stat-label{font-size:13px;color:var(--muted-dark);margin-top:4px;}
+
+  /* SECTION helpers */
+  section{padding:110px 0;}
+  .section-head{max-width:640px;margin-bottom:60px;}
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{font-size:38px;font-weight:600;line-height:1.25;color:var(--ink);}
+  .section-head p{color:var(--muted);margin-top:16px;font-size:16px;}
+  .on-dark .section-head h2{color:#fff;}
+  .on-dark .section-head p{color:var(--muted-dark);}
+
+  /* ABOUT / VISION-MISSION */
+  .about{background:var(--white);}
+  .about-lead{max-width:720px;margin-bottom:56px;}
+  .about-lead p{color:var(--muted);font-size:18px;margin-top:16px;}
+  .vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .vm-block{background:#fff;padding:40px 44px;}
+  .vm-block .eyebrow{margin-bottom:16px;}
+  .vm-block p{font-family:'Playfair Display',serif;font-style:italic;font-size:21px;line-height:1.5;color:var(--ink);}
+  .about-more{margin-top:40px;}
+  .about-more a{
+    font-size:14.5px;font-weight:600;color:var(--ink);
+    border-bottom:1px solid var(--ink);padding-bottom:3px;
+    transition:color .25s ease,border-color .25s ease,letter-spacing .25s ease;
+  }
+  .about-more a:hover{color:var(--muted);border-color:var(--muted);letter-spacing:.01em;}
+
+  /* ABOUT-VIEW PAGE HERO */
+  .page-hero{background:var(--black);color:#fff;padding:170px 0 90px;position:relative;overflow:hidden;}
+  .page-hero::before{content:"";position:absolute;top:-140px;right:-120px;width:460px;height:460px;border:1px solid rgba(255,255,255,.08);border-radius:50%;animation:spin 45s linear infinite;}
+  .page-hero .wrap{position:relative;z-index:2;}
+  .page-hero .eyebrow{color:var(--muted-dark);margin-bottom:20px;}
+  .page-hero h1{font-size:50px;font-weight:600;line-height:1.15;max-width:760px;letter-spacing:-.01em;}
+  .page-hero p.lead{font-size:18px;color:#c9c9c9;max-width:560px;margin-top:22px;}
+  .back-home{margin-top:34px;}
+  .back-home a{font-size:13.5px;font-weight:600;color:#fff;letter-spacing:.02em;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:3px;transition:border-color .25s ease,color .25s ease;}
+  .back-home a:hover{color:var(--muted-dark);border-color:var(--muted-dark);}
+
+  /* HERITAGE (narrative) */
+  .heritage{background:var(--offwhite);}
+  .heritage-copy{max-width:760px;}
+  .heritage-copy p{color:var(--muted);font-size:16px;margin-bottom:18px;}
+
+  /* FOUNDER */
+  .founder{background:var(--white);}
+  .founder-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:start;}
+  .founder-copy .eyebrow{margin-bottom:18px;}
+  .founder-copy h2{font-size:36px;color:var(--ink);margin-bottom:6px;}
+  .founder-role{color:var(--muted);font-size:15px;margin-bottom:28px;}
+  .founder-copy p{color:var(--muted);font-size:16px;margin-bottom:16px;}
+  .founder-links{display:flex;gap:24px;margin-top:28px;flex-wrap:wrap;font-size:14.5px;}
+  .founder-links a{border-bottom:1px solid var(--ink);padding-bottom:2px;font-weight:600;}
+  .founder-links a:hover{color:var(--muted);border-color:var(--muted);}
+  .snapshot{background:#fff;border:1px solid var(--line);padding:36px;}
+  .snapshot h3{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);margin-bottom:22px;font-weight:700;}
+  .snapshot ul{list-style:none;}
+  .snapshot li{
+    display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--ink);
+  }
+  .snapshot li:first-child{border-top:none;}
+  .snapshot li strong{display:block;font-weight:600;}
+  .snapshot li span{color:var(--muted);font-size:13.5px;}
+  .snapshot .dot{color:var(--ink);font-size:10px;line-height:1.9;}
+
+  /* SERVICES */
+  .services{background:var(--black);color:#fff;}
+  .svc-feature{
+    display:grid;grid-template-columns:.85fr 1.15fr;gap:0;
+    border:1px solid var(--line-dark);
+  }
+  .svc-feature .svc-left{
+    padding:48px 44px;border-right:1px solid var(--line-dark);
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .svc-num{font-family:'Playfair Display',serif;color:var(--muted-dark);font-size:15px;margin-bottom:20px;}
+  .svc-left h3{font-size:26px;font-weight:600;color:#fff;font-family:'Inter',sans-serif;line-height:1.3;}
+  .svc-right{padding:48px 44px;}
+  .svc-right p.svc-lead{font-size:17px;color:#e4e4e4;line-height:1.6;margin-bottom:28px;}
+  .svc-points{list-style:none;}
+  .svc-points li{
+    display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line-dark);
+    font-size:14.5px;color:var(--muted-dark);transition:padding-left .25s ease,color .25s ease;
+  }
+  .svc-points li:hover{padding-left:6px;color:#fff;}
+  .svc-points li strong{color:#fff;font-weight:600;display:block;margin-bottom:2px;}
+  .svc-points .idx{color:#fff;font-family:'Playfair Display',serif;font-size:13px;}
+
+  /* PROOF (personal content) */
+  .proof{background:var(--offwhite);}
+  .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .proof-copy .eyebrow{margin-bottom:16px;}
+  .proof-copy h2{font-size:34px;font-weight:600;line-height:1.25;color:var(--ink);margin-bottom:20px;}
+  .proof-copy p{color:var(--muted);font-size:16px;margin-bottom:16px;}
+  .proof-brands{margin-top:22px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+  .proof-brands strong{color:var(--ink);font-weight:600;}
+  .proof-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .proof-stat{background:#fff;padding:34px 30px;transition:background .3s ease;}
+  .proof-stat:hover{background:var(--offwhite);}
+  .proof-stat .n{font-family:'Playfair Display',serif;font-size:40px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;}
+  .proof-stat .l{font-size:13px;color:var(--muted);margin-top:6px;}
+
+  /* CASE STUDY */
+  .case{background:var(--white);}
+  .case-panel{
+    background:#fff;border:1px solid var(--line);
+    display:grid;grid-template-columns:1fr 1fr;
+  }
+  .case-copy{padding:56px;}
+  .case-copy .eyebrow{margin-bottom:14px;}
+  .case-copy h3{font-size:28px;margin-bottom:18px;color:var(--ink);}
+  .case-copy p{color:var(--muted);margin-bottom:16px;font-size:15.5px;}
+  .case-copy ul{margin:20px 0 0;padding-left:20px;color:var(--muted);font-size:15px;}
+  .case-copy li{margin-bottom:8px;}
+  .case-stats{
+    background:var(--black);color:#fff;padding:56px 44px;
+    display:flex;flex-direction:column;justify-content:center;gap:34px;
+  }
+  .case-stat .stat-num{font-size:44px;}
+  .case-stat .stat-label{color:var(--muted-dark);font-size:14px;margin-top:6px;}
+  .case-foc{padding-left:18px;border-left:2px solid rgba(255,255,255,.25);}
+  .case-foc strong{display:block;font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:#fff;margin-bottom:4px;}
+  .case-foc span{color:var(--muted-dark);font-size:14px;}
+
+  /* CONTACT */
+  .contact{background:var(--black);color:#fff;text-align:center;}
+  .contact .eyebrow{color:var(--muted-dark);justify-content:center;display:flex;margin-bottom:20px;}
+  .contact h2{font-size:42px;max-width:640px;margin:0 auto 20px;color:#fff;}
+  .contact p{color:var(--muted-dark);max-width:520px;margin:0 auto 40px;font-size:16.5px;}
+  .contact-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
+  .contact-meta{margin-top:36px;color:#7a7a7a;font-size:13.5px;}
+  .contact-meta a{color:#c9c9c9;}
+  .contact-meta a:hover{color:#fff;}
+
+  footer{
+    background:#000;color:#7a7a7a;padding:32px 0;font-size:13px;
+    border-top:1px solid var(--line-dark);
+  }
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer a{color:#a3a3a3;}
+  footer a:hover{color:#fff;}
+
+  /* ============ ANIMATIONS ============ */
+
+  /* Nav shrink on scroll */
+  header{transition:height .3s ease, background .3s ease;}
+  header.scrolled{background:rgba(10,10,10,.98);box-shadow:0 1px 0 rgba(255,255,255,.06);}
+  header.scrolled nav.wrap{height:60px;}
+  nav.wrap{transition:height .3s ease;}
+
+  /* Hero staggered entrance */
+  .hero .eyebrow,.hero h1,.hero p.lead,.hero-actions,.stat-row{
+    opacity:0;transform:translateY(24px);
+    animation:heroIn .9s cubic-bezier(.16,.84,.44,1) forwards;
+  }
+  .hero h1{animation-delay:.12s;}
+  .hero p.lead{animation-delay:.24s;}
+  .hero-actions{animation-delay:.36s;}
+  .stat-row{animation-delay:.5s;}
+  @keyframes heroIn{to{opacity:1;transform:translateY(0);}}
+
+  /* Hero decorative rings slow spin */
+  .hero::before{animation:spin 40s linear infinite;}
+  .hero::after{animation:spin 55s linear infinite reverse;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.16,.84,.44,1),transform .7s cubic-bezier(.16,.84,.44,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal.d1{transition-delay:.08s;}
+  .reveal.d2{transition-delay:.16s;}
+  .reveal.d3{transition-delay:.24s;}
+  .reveal.d4{transition-delay:.32s;}
+  .reveal.d5{transition-delay:.4s;}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .hero .eyebrow,.hero h1,.hero p.lead,.hero-actions,.stat-row{opacity:1;transform:none;animation:none;}
+    .hero::before,.hero::after{animation:none;}
+  }
+
+  /* Buttons */
+  .btn{position:relative;overflow:hidden;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25);}
+  .btn-outline:hover{transform:translateY(-2px);}
+  .btn{transition:transform .25s ease,background .25s ease,border-color .25s ease,box-shadow .25s ease,color .25s ease;}
+
+  /* Service feature accent line */
+  .svc-feature{position:relative;overflow:hidden;}
+  .svc-feature::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:#fff;transition:width .6s cubic-bezier(.16,.84,.44,1);}
+  .svc-feature.in::after{width:100%;}
+
+  /* Vision/Mission hover */
+  .vm-block{transition:background .3s ease;}
+  .vm-block:hover{background:var(--offwhite);}
+
+  /* Snapshot list rows */
+  .snapshot li{transition:padding-left .25s ease,color .25s ease;}
+  .snapshot li:hover{padding-left:6px;}
+
+  /* Stat count-up baseline */
+  .stat-num[data-count]{font-variant-numeric:tabular-nums;}
+
+  /* Nav link underline sweep */
+  .navlinks a:not(.cta){position:relative;}
+  .navlinks a:not(.cta)::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:#fff;transition:width .3s ease;}
+  .navlinks a:not(.cta):hover::after{width:100%;}
+
+  /* Founder links arrow */
+  .founder-links a{transition:color .25s ease,border-color .25s ease;}
+
+  @media(max-width:860px){
+    .hero h1{font-size:38px;}
+    .hero{padding:150px 0 80px;}
+    .stat-row{grid-template-columns:repeat(3,1fr);gap:10px;}
+    .vm-grid{grid-template-columns:1fr;}
+    .proof-grid{grid-template-columns:1fr;gap:40px;}
+    .founder-grid{grid-template-columns:1fr;gap:40px;}
+    .svc-feature{grid-template-columns:1fr;}
+    .svc-feature .svc-left{border-right:none;border-bottom:1px solid var(--line-dark);padding:36px 28px;}
+    .svc-right{padding:36px 28px;}
+    .case-panel{grid-template-columns:1fr;}
+    .case-copy{padding:36px 28px;}
+    .case-stats{padding:36px 28px;flex-direction:row;flex-wrap:wrap;}
+    .navlinks{
+      position:fixed;top:74px;left:0;right:0;background:var(--black);
+      flex-direction:column;padding:20px 28px 30px;gap:20px;
+      display:none;border-top:1px solid var(--line-dark);
+    }
+    .navlinks.open{display:flex;}
+    .menu-btn{display:block;}
+    .section-head h2{font-size:28px;}
+    .contact h2{font-size:30px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand" data-view="home">DOREN Advisory</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
+    <div class="navlinks" id="navLinks">
+      <a href="#about" data-view="about" id="aboutTab">About</a>
+      <a href="#services" data-view="home" data-scroll="services">Services</a>
+      <a href="#results" data-view="home" data-scroll="results">Results</a>
+      <a href="#contact" data-view="home" data-scroll="contact" class="cta">Start a Conversation</a>
+    </div>
+  </nav>
+</header>
+
+<div id="homeView">
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Growth &amp; Strategy Advisory</p>
+    <h1>Clarity and strategy for founders building <em>what's next.</em></h1>
+    <p class="lead">DOREN Advisory works directly with early-stage founders on market positioning and community-building — turning promising ideas into brands with a loyal audience behind them.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Start a Conversation</a>
+      <a href="#results" class="btn btn-outline">See Our Results</a>
+    </div>
+    <div class="stat-row">
+      <div>
+        <div class="stat-num" data-count="100" data-prefix="" data-suffix="K+">100K+</div>
+        <div class="stat-label">Audience built from scratch</div>
+      </div>
+      <div>
+        <div class="stat-num" data-count="50" data-prefix="" data-suffix="M+">50M+</div>
+        <div class="stat-label">Views across platforms</div>
+      </div>
+      <div>
+        <div class="stat-num" data-count="3" data-prefix="" data-suffix="">3</div>
+        <div class="stat-label">Platforms grown in parallel</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-lead reveal">
+      <p class="eyebrow">About DOREN Advisory</p>
+      <h2 class="serif" style="font-size:34px;font-weight:600;">Structure for founders building what's next.</h2>
+      <p>DOREN Advisory brings sharp positioning and hands-on community-building to early-stage companies — before they're big enough for a traditional consulting engagement.</p>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-block reveal">
+        <p class="eyebrow">Vision</p>
+        <p>Become the advisory early-stage founders call before they make their first real hire.</p>
+      </div>
+      <div class="vm-block reveal d2">
+        <p class="eyebrow">Mission</p>
+        <p>Give founders the positioning clarity and community foundation that turn early traction into lasting demand.</p>
+      </div>
+    </div>
+    <div class="about-more reveal d1">
+      <a href="#about" data-view="about">Read our story &amp; meet the founder &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="services on-dark" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What We Do</p>
+      <h2>Building your foundational market &amp; community</h2>
+      <p>One focused engagement — grounded in strategies proven across real content, not theory.</p>
+    </div>
+    <div class="svc-feature reveal d1">
+      <div class="svc-left">
+        <div class="svc-num">01</div>
+        <h3>Foundational Market &amp; Community Building</h3>
+      </div>
+      <div class="svc-right">
+        <p class="svc-lead">Build your foundational consumer market and community through testable, data-backed strategies — the same methods proven across a 100,000+ person content audience — grounded in continuous analysis of what actually drives engagement and conversion.</p>
+        <ul class="svc-points">
+          <li><span class="idx">a</span><div><strong>Testable Growth Strategies</strong>Deploy and iterate on tactics validated in real content, so decisions rest on evidence rather than guesswork.</div></li>
+          <li><span class="idx">b</span><div><strong>Community Foundation</strong>Establish an engaged core audience that compounds into durable, organic demand.</div></li>
+          <li><span class="idx">c</span><div><strong>Continuous Analysis</strong>Track engagement and conversion data to double down on what works and cut what doesn't.</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="case" id="results">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Case Study</p>
+      <h2>Positioning &amp; community for a fashion-tech startup</h2>
+    </div>
+    <div class="case-panel reveal d1">
+      <div class="case-copy">
+        <p class="eyebrow">AGMNT &middot; Fashion-Tech Startup</p>
+        <h3>Sharper positioning, a stronger community</h3>
+        <p>AGMNT partnered with DOREN Advisory to sharpen how their events were positioned and to build a more engaged community around them. We reworked their messaging and audience targeting to reach the right people and give them a reason to keep showing up.</p>
+        <ul>
+          <li>Refined event positioning and messaging to connect with the right audience</li>
+          <li>Built a data-driven targeting strategy to grow reach and community engagement</li>
+          <li>Shaped the on-site experience to turn first-time attendees into repeat supporters</li>
+        </ul>
+      </div>
+      <div class="case-stats">
+        <div class="case-foc">
+          <strong>Positioning</strong>
+          <span>Rebuilt how each event was framed and messaged</span>
+        </div>
+        <div class="case-foc">
+          <strong>Targeting</strong>
+          <span>Focused reach on the audience most likely to show up</span>
+        </div>
+        <div class="case-foc">
+          <strong>Community</strong>
+          <span>Turned attendees into a returning core audience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap proof-grid">
+    <div class="proof-copy reveal">
+      <p class="eyebrow">Proven in Practice</p>
+      <h2>These strategies are tested on my own audience first.</h2>
+      <p>Everything DOREN Advisory brings to founders is grounded in real, hands-on experience — not theory. I built and monetized a 100,000+ person audience and 50M+ views across TikTok, Instagram, and YouTube, learning firsthand what actually captures attention and turns viewers into a loyal community.</p>
+      <p>That same work led me to found South East Asian Flava (SEAF), a cultural media platform built to grow community through storytelling and shared identity — and to secure partnerships with brands like Ralph Lauren, Maison Margiela, and the State of California.</p>
+      <p class="proof-brands">Partnered with <strong>Ralph Lauren</strong> &middot; <strong>Maison Margiela</strong> &middot; <strong>State of California (CYBHI)</strong></p>
+    </div>
+    <div class="proof-stats reveal d1">
+      <div class="proof-stat">
+        <div class="n" data-count="100" data-prefix="" data-suffix="K+">100K+</div>
+        <div class="l">Audience built from scratch</div>
+      </div>
+      <div class="proof-stat">
+        <div class="n" data-count="50" data-prefix="" data-suffix="M+">50M+</div>
+        <div class="l">Total views across platforms</div>
+      </div>
+      <div class="proof-stat">
+        <div class="n">3</div>
+        <div class="l">Platforms grown in parallel</div>
+      </div>
+      <div class="proof-stat">
+        <div class="n">SEAF</div>
+        <div class="l">Cultural media brand founded</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Let's bring clarity to your growth strategy.</h2>
+    <p>Whether you're refining how your brand is positioned or building the community around it, DOREN Advisory works directly with founders to grow a loyal audience.</p>
+    <div class="contact-actions">
+      <a href="mailto:logan.delrosario.co@gmail.com" class="btn btn-primary">Email logan.delrosario.co@gmail.com</a>
+      <a href="https://www.linkedin.com/in/logan-delrosario-a75565264" target="_blank" rel="noopener" class="btn btn-outline">View LinkedIn</a>
+    </div>
+    <p class="contact-meta">Based in the Los Angeles Metropolitan Area &middot; Working with founders remotely and in person</p>
+  </div>
+</section>
+
+</div><!-- /homeView -->
+
+<div id="aboutView">
+
+<section class="page-hero" id="about-top">
+  <div class="wrap">
+    <p class="eyebrow">About DOREN Advisory</p>
+    <h1>The story, and the founder behind it.</h1>
+    <p class="lead">Why DOREN Advisory exists, how it works, and who's behind it.</p>
+    <div class="back-home">
+      <a href="#top" data-view="home">&larr; Back to home</a>
+    </div>
+  </div>
+</section>
+
+<section class="heritage">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Heritage</p>
+      <h2>Why this, why now.</h2>
+    </div>
+    <div class="heritage-copy reveal d1">
+      <p>DOREN Advisory started from a simple observation: most early-stage companies don't fail from a lack of effort — they fail from a lack of clarity. Founders are moving fast, wearing every hat, and rarely have the bandwidth to step back and get their positioning right.</p>
+      <p>The firm works hands-on, embedded alongside founders and operators rather than at a distance — sharpening how the brand shows up, building the community around it, and training teams to carry that momentum forward long after the engagement ends.</p>
+      <p>Current work centers on market positioning and community-building for early-stage companies, including a partnership with AGMNT, a fashion-tech startup, to sharpen their positioning and grow the community around their events.</p>
+    </div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <div class="wrap founder-grid">
+    <div class="founder-copy reveal">
+      <p class="eyebrow">Founder</p>
+      <h2 class="serif">Logan Del Rosario</h2>
+      <p class="founder-role">Founder &amp; Consultant, DOREN Advisory</p>
+      <p>Logan is a Business Economics student at the University of California, Riverside and a Regents Scholar, with a background in market analysis, brand positioning, and audience growth.</p>
+      <p>Alongside DOREN Advisory, Logan built and monetized a 100,000+ person digital audience (50M+ views) across TikTok, Instagram, and YouTube — giving the firm a practical, data-driven lens on positioning, audience-building, and community growth.</p>
+      <div class="founder-links">
+        <a href="https://www.linkedin.com/in/logan-delrosario-a75565264" target="_blank" rel="noopener">View LinkedIn &rarr;</a>
+        <a href="mailto:logan.delrosario.co@gmail.com">logan.delrosario.co@gmail.com</a>
+      </div>
+    </div>
+    <div class="snapshot reveal d2">
+      <h3>Snapshot</h3>
+      <ul>
+        <li><span class="dot">&#9632;</span>
+          <div><strong>UC Riverside</strong><span>B.A. Business Economics &middot; Regents Scholar</span></div>
+        </li>
+        <li><span class="dot">&#9632;</span>
+          <div><strong>Mt. San Antonio College</strong><span>A.A.-T Economics &middot; 3.95 GPA &middot; President's List</span></div>
+        </li>
+        <li><span class="dot">&#9632;</span>
+          <div><strong>100K+ Audience Built</strong><span>50M+ views across TikTok, Instagram &amp; YouTube</span></div>
+        </li>
+        <li><span class="dot">&#9632;</span>
+          <div><strong>Toastmasters International</strong><span>Active member &mdash; executive communication &amp; presentation</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap reveal">
+    <p class="eyebrow">Get In Touch</p>
+    <h2>Let's bring clarity to your growth strategy.</h2>
+    <p>Ready to build your foundational market and community? Let's talk.</p>
+    <div class="contact-actions">
+      <a href="mailto:logan.delrosario.co@gmail.com" class="btn btn-primary">Email logan.delrosario.co@gmail.com</a>
+      <a href="#top" data-view="home" class="btn btn-outline">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /aboutView -->
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year"></span> DOREN Advisory. All rights reserved.</span>
+    <a href="mailto:logan.delrosario.co@gmail.com">logan.delrosario.co@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function(){
+    navLinks.classList.toggle('open');
+  });
+
+  // ===== Tab / view switching (single page) =====
+  var homeView = document.getElementById('homeView');
+  var aboutView = document.getElementById('aboutView');
+  var aboutTab = document.getElementById('aboutTab');
+
+  function showView(view, scrollTo){
+    var showAbout = (view === 'about');
+    aboutView.style.display = showAbout ? 'block' : 'none';
+    homeView.style.display  = showAbout ? 'none' : 'block';
+    aboutTab.classList.toggle('active', showAbout);
+
+    // Re-run reveal animations for the newly shown view
+    var scope = showAbout ? aboutView : homeView;
+    scope.querySelectorAll('.reveal').forEach(function(el){ el.classList.remove('in'); });
+    requestAnimationFrame(function(){
+      scope.querySelectorAll('.reveal').forEach(function(el){ revObserver && revObserver.observe(el); });
+    });
+
+    if(scrollTo){
+      var target = document.getElementById(scrollTo);
+      if(target){ setTimeout(function(){ target.scrollIntoView({behavior:'smooth'}); }, 60); return; }
+    }
+    window.scrollTo({top:0, behavior:'auto'});
+  }
+
+  // Intercept any link carrying data-view
+  document.querySelectorAll('[data-view]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      navLinks.classList.remove('open');
+      showView(link.getAttribute('data-view'), link.getAttribute('data-scroll'));
+    });
+  });
+
+  // Nav shrink on scroll
+  var header = document.querySelector('header');
+  function onScroll(){
+    if(window.scrollY > 30){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Count-up animation
+  function countUp(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var dur = 1400, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = Math.round(eased * target);
+      el.textContent = prefix + val + suffix;
+      if(p < 1){ requestAnimationFrame(step); }
+      else{ el.textContent = prefix + target + suffix; }
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Scroll reveal + trigger count-ups when visible
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window && !reduce){
+    var revObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          e.target.querySelectorAll('[data-count]').forEach(function(s){
+            if(!s.dataset.done){ s.dataset.done = '1'; countUp(s); }
+          });
+          revObserver.unobserve(e.target);
+        }
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ revObserver.observe(el); });
+
+    // Hero stats count up on load (not wrapped in .reveal)
+    var statObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.querySelectorAll('[data-count]').forEach(function(s){
+            if(!s.dataset.done){ s.dataset.done = '1'; countUp(s); }
+          });
+          statObserver.unobserve(e.target);
+        }
+      });
+    }, {threshold:.4});
+    document.querySelectorAll('.hero .stat-row').forEach(function(el){ statObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
